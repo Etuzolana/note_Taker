@@ -5,16 +5,26 @@ const db = require('../db/db.json')
 router.get('/notes', (req, res) =>{
 
     //const UsersNotes = fs readfile(db)
+   
+
+    
     // res.sendFile( UsersNotes)
-    res.send("/api/notes GET route hit")
+    res.json(db)
 });
 // /api/notes
 router.post('/notes', (req, res) =>{
     //fs readfile(db)
+
+
+        db.push(req.body)
     //append to the file
+
     // fs writefile(db)
+    fs.writeFileSync("./db/db.json",JSON.stringify(db))
+
     //res.status(200)
-    res.send("/api/notes POST route hit")
+    res.json(db)
 });
+
 
 module.exports = router;
